@@ -1,3 +1,12 @@
+*~
+*.swp
+*.log
+*.exe
+/docs/
+
+lib64
+include
+
 # Compiled Object files
 *.o
 *.obj
