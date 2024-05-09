@@ -1,6 +1,27 @@
+# var
+MODULE = $(notdir $(CURDIR))
+
 # tool
 PY  = bin/python3
 PIP = bin/pip3
+DC  = /usr/bin/dmd
+DUB = /usr/bin/dub
+RUN = $(DUB) run --compiler=$(DC)
+
+# src
+D += $(wildcard src/*.d)
+F += lib/$(MODULE).ini $(wildcard lib/*.f)
+
+# all
+.PHONY: all
+all: $(D) $(F)
+	$(RUN) -- $(F)
+
+# format
+.PHONY: format
+format: tmp/format_d
+tmp/format_d: $(D)
+	dub run dfmt -- -i $? && touch $@
 
 # install
 .PHONY: install update gz ref
