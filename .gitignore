@@ -5,7 +5,8 @@
 /docs/
 
 lib64
-include
+include/
+share/
 
 # Compiled Object files
 *.o
